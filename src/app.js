@@ -3,6 +3,8 @@ import cors from "cors";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
+import adminAuthRoutes from "./routes/adminAuthRoutes.js";
+
 
 dotenv.config();
 
@@ -21,7 +23,10 @@ app.use(cors({
 import authRoutes from "./routes/authRoutes.js";
 
 // Routes
+app.use("/api/admin", adminAuthRoutes);
+
 app.use("/api/auth", authRoutes);
+
 
 // Health check
 app.get("/", (req, res) => {
